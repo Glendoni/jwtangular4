@@ -1,8 +1,12 @@
 {
   "name": "ng4",
   "version": "0.0.0",
-  "description": "Dasha - Bootstrap Admin App + Angular4",
+  "description": "My test app",
+  "version": "1.0.0",
   "author": "@themicon_co",
+    "engines": {
+    "node": "8.5.0"
+  },
   "scripts": {
     "ng": "ng",
     "install": "napa",
