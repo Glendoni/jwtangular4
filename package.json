@@ -13,7 +13,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "modernizr": "modernizr -c modernizr-config.json -d src/modernizr.js",
-    "postinstall": "node ./node_modules/protractor/bin/webdriver-manager update"
+    "postinstall": "ng build --aot -prod",
+    "deploy": "git push origin master && git push heroku master"
   },
   "private": true,
   "napa": {
