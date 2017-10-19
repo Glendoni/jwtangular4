@@ -14,13 +14,6 @@
     "deploy": "git push origin master && git push heroku master"
   },
   "private": true,
-  "napa": {
-    "flot": "flot/flot#v0.8.3",
-    "jquery.flot.spline": "miloszfalinski/jquery.flot.spline",
-    "ika.jvectormap": "kakirigi/ika.jvectormap",
-    "sidebysideimproved": "pkoltermann/sidebysideimproved",
-    "nestable": "dbushell/Nestable"
-  },
   "engines": {
     "node": "8.5.0",
     "npm": "5.5.1"
