@@ -7,7 +7,8 @@
 
 import { Injectable, Optional } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 import { User } from '../_models/index';
 
 let nextId = 1;
@@ -19,8 +20,7 @@ export class UserServiceConfig {
 @Injectable()
 export class UserService {
   id = nextId++;
-  private _userName = 'Sherlock Holmes';
-
+    private _userName = 'Sherlock Holmes';
   constructor(@Optional() config: UserServiceConfig, private http: Http) {
     if (config) { this._userName = config.userName; }
   }
@@ -30,12 +30,9 @@ export class UserService {
     const suffix = this.id > 1 ? ` times ${this.id}` : '';
     return this._userName + suffix;
   }
-
-
      getAll() {
           return this.http.get('http://core.app/home', this.jwt()).map((response: Response) => response.json());
     }
-    
     getById(id: number) {
         return this.http.get('http://core.app/home/' + id, this.jwt()).map((response: Response) => response.json());
     }
@@ -51,18 +48,15 @@ export class UserService {
     delete(id: number) {
         return this.http.delete('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
     }
-    
      getPages() {
-        
         console.log('sdfs');
         return this.http.get('http://core.app/pages', this.jwt()).map((response: Response) => response.json());
     }
- 
     private jwt() {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
             return new RequestOptions({ headers: headers });
         }
     }

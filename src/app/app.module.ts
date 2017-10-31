@@ -5,9 +5,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }   from './app.component';
 
 /* Feature Modules */
-import { ContactModule }    from './contact/contact.module';
-import { CoreModule }       from './core/core.module';
 
+import { CoreModule }       from './core/core.module';
+import { HomeModule } from './home/home.module';
 /* Routing Module */
 import { AppRoutingModule } from './app-routing.module';
 import { BaseRequestOptions } from '@angular/http';
@@ -18,20 +18,21 @@ import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService } from './_services/index';
 import { LoginComponent } from './login/index';
 import { UserComponent } from './user/index';
+import { MenuComponent } from './menu/menu/menu.component';
 
 @NgModule({
   imports: [
     BrowserModule,
-    ContactModule,
-      FormsModule,
-      HttpModule,
+    HomeModule,
+    FormsModule,
+    HttpModule,
 /*
     CoreModule,
 */
     CoreModule.forRoot({userName: 'Miss Marple'}),
     AppRoutingModule
   ],
-  declarations: [ AppComponent, LoginComponent, UserComponent ],
+  declarations: [ AppComponent, LoginComponent, UserComponent, AlertComponent, MenuComponent],
     providers: [
         AuthGuard,
         AlertService,

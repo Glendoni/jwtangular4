@@ -5,10 +5,15 @@ import { UserComponent } from './user/index';
 import { AuthGuard } from './_guards/index';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'contact', pathMatch: 'full'},
-    { path: 'login', component: LoginComponent },
-  { path: 'crisis', loadChildren: 'app/crisis/crisis.module#CrisisModule' },
-  { path: 'heroes', loadChildren: 'app/hero/hero.module#HeroModule' }
+ 
+  { path: 'login', component: LoginComponent },
+  { path: 'crisis', loadChildren: 'app/crisis/crisis.module#CrisisModule' , canActivate: [AuthGuard]},
+  { path: 'contact', loadChildren: 'app/contact/contact.module#ContactModule' , canActivate: [AuthGuard]},
+  { path: 'heroes', loadChildren: 'app/hero/hero.module#HeroModule' , canActivate: [AuthGuard]},
+    
+    
+    { path: '', redirectTo: 'login', pathMatch: 'full'}   
+    
 ];
 
 @NgModule({

@@ -1,16 +1,35 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map'
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/map';
+ 
+
 
 @Injectable()
 export class AuthenticationService {
+    
+       private subject = new Subject<any>();
     public token: string;
 
     constructor(private http: Http) {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.token = currentUser && currentUser.token;
+    }
+    
+    sendMessage(message: string) {
+        this.subject.next({ text: message });
+    }
+
+    clearMessage() {
+        this.subject.next();
+    }
+
+    getMessage(): Observable<any> {
+       
+        
+        return this.subject.asObservable();
     }
 
           login(username: string, password: string) {
@@ -20,7 +39,7 @@ export class AuthenticationService {
             .map((response: Response) => {
 
                 // login successful if there's a jwt token in the response
-                let token = response.json() && response.json().token;
+                const token = response.json() && response.json().token;
                 if (token) {
                     // set token property
                     this.token = token;
@@ -41,5 +60,6 @@ export class AuthenticationService {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+        this.subject.next();
     }
 }

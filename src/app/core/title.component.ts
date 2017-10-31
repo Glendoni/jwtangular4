@@ -8,7 +8,7 @@ import { UserService }      from '../core/user.service';
 })
 export class TitleComponent {
   @Input() subtitle = '';
-  title = 'Angular Modules';
+  title = 'Observable Demo';
   user = '';
 
   constructor(userService: UserService) {

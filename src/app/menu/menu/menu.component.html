@@ -1,0 +1,7 @@
+<nav *ngIf="message">
+     <a routerLink="home"  routerLinkActive="active">Home </a>
+      <a routerLink="contact" routerLinkActive="active">Contact</a>
+      <a routerLink="crisis"  routerLinkActive="active">Crisis Center</a>
+      <a routerLink="heroes"  routerLinkActive="active">Heroes</a>
+ <a [routerLink]="['/login']">Logouts</a> 
+    </nav>

@@ -1,7 +1,8 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
+import {Observable} from 'rxjs/Observable';
 import { User } from '../_models/index';
+
 
 @Injectable()
 export class UserService {
@@ -29,7 +30,6 @@ export class UserService {
     
      getPages() {
         
-        console.log('sdfs');
         return this.http.get('http://core.app/pages', this.jwt()).map((response: Response) => response.json());
     }
  
@@ -41,4 +41,6 @@ export class UserService {
             return new RequestOptions({ headers: headers });
         }
     }
+    
+     
 }

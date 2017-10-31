@@ -1,17 +1,31 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-root',
-  template: `
-    <app-title [subtitle]="subtitle"></app-title>
-    <nav>
-      <a routerLink="contact" routerLinkActive="active">Contact</a>
-      <a routerLink="crisis"  routerLinkActive="active">Crisis Center</a>
-      <a routerLink="heroes"  routerLinkActive="active">Heroes</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `
+  templateUrl: 'app.component.html'
+        
+  
 })
 export class AppComponent {
-  subtitle = '(Final)';
+    
+    subtitle = '(Final)';
+    
+    /*
+    <div *ngIf="message" class="alert alert-success">{{message.text}}</div>
+    message: any;
+    subscription: Subscription;
+
+    constructor(private userService: UserService) {
+        // subscribe to home component messages
+        this.subscription = this.userService.getMessage().subscribe(message => { this.message = message; });
+    }
+
+    ngOnDestroy() {
+        // unsubscribe to ensure no memory leaks
+        this.subscription.unsubscribe();
+    }
+    
+    */
+    
 }
