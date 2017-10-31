@@ -31,14 +31,15 @@ export class UserService {
     return this._userName + suffix;
   }
      getAll() {
-          return this.http.get('http://core.app/home', this.jwt()).map((response: Response) => response.json());
+          return this.http.get('https://herokudeploydev.herokuapp.com/home', this.jwt()).map((response: Response) => response.json());
     }
     getById(id: number) {
-        return this.http.get('http://core.app/home/' + id, this.jwt()).map((response: Response) => response.json());
+        return this.http.get('https://herokudeploydev.herokuapp.com/home/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(user: User) {
-        return this.http.post('http://core.app/create', user, this.jwt()).map((response: Response) => response.json());
+        return this.http.post('https://herokudeploydev.herokuapp.com/create', user,
+                              this.jwt()).map((response: Response) => response.json());
     }
 
     update(user: User) {
