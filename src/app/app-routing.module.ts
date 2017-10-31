@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: 'heroes', loadChildren: 'app/hero/hero.module#HeroModule' , canActivate: [AuthGuard]},
     
     
-    { path: '', redirectTo: 'login', pathMatch: 'full'}   
+    { path: '', redirectTo: 'home', pathMatch: 'full'}   
     
 ];
 
