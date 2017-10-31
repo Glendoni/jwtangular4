@@ -34,8 +34,8 @@ export class UserComponent implements OnInit {
      //this.alertService.success('Hi! successful', true); 
  
             
-            console.log(users.usd);
-                this.users = users.usd;
+            console.log(users);
+                this.users = users;
             }
                       );
         
